@@ -9,7 +9,20 @@ import SwiftUI
 
 struct WeatherView: View {
     var weather: ResponseBody
-    
+    let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "hh:mm a"
+        return formatter
+    }()
+
+    var sunriseDate: Date {
+        Date(timeIntervalSince1970: weather.sys.sunrise)
+    }
+
+    var sunsetDate: Date {
+        Date(timeIntervalSince1970: weather.sys.sunset)
+    }
+
     var body: some View {
         ZStack(alignment:.leading){
             VStack{
@@ -104,14 +117,16 @@ struct WeatherView: View {
             
             VStack{
                 Spacer()
-                VStack(alignment: .leading, spacing: 20){
+                VStack(alignment: .leading, spacing: 1){
                     Text("Weather Now")
                         .bold().padding(.bottom)
                     HStack{
-                        let time = NSDate(timeIntervalSince1970: weather.sys.sunrise)
-                        WeatherRow(logo: "sunrise", name: "SunSet", value: weather.sys.sunrise.roundDouble() + "am")
+                        WeatherRow(logo: "sunrise", name: "Sunrise", value: dateFormatter.string(from: sunriseDate))
+                            .font(.system(size: 5))
                         Spacer()
-                        WeatherRow(logo: "sunset", name: "SunRise", value: ("\(time)") + " pm")
+
+                        WeatherRow(logo: "sunset", name: "Sunset", value: dateFormatter.string(from: sunsetDate))
+                            .font(.system(size: 5))
                         
                     }
                     HStack{
@@ -164,3 +179,5 @@ struct TestView: View {
                         }
         }
 }
+
+

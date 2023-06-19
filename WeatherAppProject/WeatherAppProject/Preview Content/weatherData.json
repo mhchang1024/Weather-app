@@ -38,7 +38,8 @@
         "sunrise":1686993864,
         "sunset":1687048167
         
-    },"timezone":-14400,
+    },
+    "timezone":-14400,
     "id":5128581,
     "name":"New York",
     "cod":200
