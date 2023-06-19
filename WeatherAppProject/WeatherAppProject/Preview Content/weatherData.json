@@ -4,7 +4,7 @@
         "lat":40.7143},
     "weather":[{
         "id":800,
-        "main":"Clear",
+        "main":"Clouds",
         "description":"clear sky",
         "icon":"01n"
         
@@ -18,7 +18,8 @@
         "pressure":1008,
         "humidity":59
         
-    },"visibility":10000,
+    },
+    "visibility":10000,
     "wind":{
         "speed":8.99,
         "deg":336,
